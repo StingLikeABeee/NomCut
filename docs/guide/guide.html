@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>NomCut Studio Guide</title>
+<style>@page{size:A4;margin:0}
+:root{--ink:#09131c;--paper:#f5faf8;--emerald:#00c47c;--amber:#ffb800;--cyan:#00b8d4;--dark:#06131f}
+*{box-sizing:border-box}
+html{font-family:"Segoe UI","Nirmala UI","Mangal",sans-serif;color:var(--ink)}
+body{margin:0;background:#fff}
+.page{width:210mm;height:297mm;position:relative;overflow:hidden;page-break-after:always;background:var(--paper);padding:16mm 16mm 16mm}
+.page.cover{padding:0;background:linear-gradient(135deg,#06131f 0%,#08262c 45%,#0b3b36 80%,#0d4a3e 100%);color:#fff}
+.cover .sun{position:absolute;left:50%;bottom:30mm;width:104mm;height:104mm;margin-left:-52mm;border-radius:50%;background:radial-gradient(circle,#00f59b88 0%,#00e5ff33 60%,transparent 75%);opacity:.95}
+.cover .grid{position:absolute;left:-20%;right:-20%;bottom:0;height:90mm;background:#060a0f;background-image:repeating-linear-gradient(90deg,#00f59b44 0 2px,transparent 2px 22mm),repeating-linear-gradient(0deg,#00e5ff44 0 2px,transparent 2px 14mm);transform:perspective(160mm) rotateX(58deg);transform-origin:bottom}
+.cover .txt{position:absolute;left:18mm;right:18mm;top:22mm;z-index:2}
+.kicker{letter-spacing:.3em;font-size:11pt;font-weight:700;color:#00e5ff}
+.cover h1{font-size:62pt;line-height:.95;margin:10mm 0 6mm;font-weight:900;letter-spacing:-.02em;text-shadow:0 0 40px #00f59b77}
+.cover h1 em{font-style:normal;color:#00f59b}
+.cover p{font-size:15pt;max-width:150mm;line-height:1.4;text-shadow:0 1px 14px #06131f}
+.cover .by{position:absolute;left:18mm;bottom:14mm;z-index:2;font-weight:700;font-size:13pt}
+.cover .by span{color:#00f59b}
+.chip{display:inline-block;background:#fff;color:#06131f;border-radius:99px;padding:3mm 6mm;font-weight:800;font-size:12pt;margin-right:3mm;text-shadow:none}
+.chip.ig{background:linear-gradient(90deg,#00f59b,#00e5ff);color:#04140d}
+h2{font-size:23pt;margin:0 0 3mm;font-weight:900;letter-spacing:-.01em;line-height:1.1}
+h2 .n{color:var(--emerald);margin-right:3mm}
+h3{font-size:13pt;margin:5mm 0 1.5mm;color:var(--dark)}
+p,li{font-size:10.5pt;line-height:1.5}
+ul,ol{padding-left:6mm;margin:2mm 0}
+code{background:#06131f;color:#80ffdb;border-radius:3px;padding:.3mm 1.6mm;font-family:Consolas,monospace;font-size:9.5pt}
+pre{background:#06131f;color:#e8f9ff;padding:4mm 5mm;border-radius:3mm;font-family:Consolas,monospace;font-size:10pt;line-height:1.5;margin:3mm 0;white-space:pre-wrap}
+pre.pr{font-size:8pt;line-height:1.38}
+.shot{border:1px solid #bfd6ce;border-radius:3mm;box-shadow:0 2mm 6mm #0002;margin:3mm 0;max-width:100%}
+.note{border-left:1.6mm solid var(--emerald);background:#e3f9f1;padding:3mm 4mm;border-radius:0 2mm 2mm 0;font-size:10pt;line-height:1.45;margin:3mm 0}
+.warn{border-left-color:var(--amber);background:#fff8e6}
+table{border-collapse:collapse;width:100%;margin:3mm 0;font-size:10pt}
+td,th{border:1px solid #c8ddd5;padding:2mm 3mm;text-align:left;vertical-align:top}
+th{background:#06131f;color:#fff}
+.foot{position:absolute;left:16mm;right:16mm;bottom:8mm;font-size:8.5pt;color:#5a756c;display:flex;justify-content:space-between;border-top:1px solid #c8ddd5;padding-top:2mm}
+.cta{background:linear-gradient(135deg,#08262c,#0d4a3e);color:#fff;border-radius:4mm;padding:6mm;margin-top:6mm}
+.cta h3{color:#00f59b;margin-top:0}
+.cta a{color:#fff;font-weight:800}
+.hi{font-family:"Nirmala UI","Mangal","Segoe UI",sans-serif}
+.hi p,.hi li{line-height:1.7}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:6mm}
+.lg{display:inline-block;background:var(--emerald);color:#fff;font-size:7.5pt;font-weight:800;border-radius:2mm;padding:.4mm 2mm;margin-right:2mm}
+.sub{font-size:14pt;font-weight:700;color:var(--dark)}
+.lead{font-size:12pt;margin:2mm 0 4mm}
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:4mm;margin:4mm 0}
+.tile{background:#fff;border:1px solid #cfe3dc;border-radius:4mm;padding:4mm 5mm;box-shadow:0 1mm 4mm #0001}
+.tile .ic{font-size:22pt}
+.tile b{display:block;font-size:13pt;margin:1mm 0;color:var(--dark)}
+.tile p{margin:0 0 1mm;font-size:10pt;line-height:1.4}
+.tiles.small .tile{padding:3mm 4mm}
+.tiles.small .tile p{font-size:9.2pt}
+.tiles.small .ic{font-size:17pt}
+.steps{display:grid;gap:3mm;margin:3mm 0}
+.stp{display:flex;gap:4mm;align-items:flex-start;background:#fff;border:1px solid #cfe3dc;border-radius:4mm;padding:3mm 4mm}
+.stp .num{flex:none;width:9mm;height:9mm;border-radius:50%;background:var(--emerald);color:#fff;font-weight:900;font-size:14pt;display:flex;align-items:center;justify-content:center}
+.stp b{font-size:10.6pt;line-height:1.35;display:block}
+.stp .hi{font-size:10.2pt;color:#3d5950;margin-top:.6mm}
+</style></head><body>
+<section class="page cover"><div class="sun"></div><div class="grid"></div>
+<div class="txt"><div class="kicker">AI HIGHLIGHT STUDIO</div><h1>NOM<br><em>CUT</em></h1>
+<p>Drop a link. Generate captioned 9:16 vertical shorts in under two minutes. Free &amp; local.<br><span class="hi">लिंक पेस्ट करो। दो मिनट में कैप्शन वाली 9:16 क्लिप पाओ। फ्री। आपके अपने कंप्यूटर पर।</span></p>
+<p style="margin-top:8mm"><span class="chip">★ Star on GitHub</span><span class="chip ig">Follow @itx_noumanarif</span></p><p style="font-size:11pt">github.com/StingLikeABeee/NomCut</p></div>
+<div class="by">Crafted by <span>Nouman Arif</span> · Instagram @itx_noumanarif · Quick Start Guide</div></section>
+<section class="page"><h2><span class="n">01</span>What you get <span class="hi sub">· आपको क्या मिलता है</span></h2>
+<img class="shot" src="home.jpg" style="width:100%">
+<div class="tiles">
+<div class="tile"><div class="ic">⚡</div><b>Single click</b><p>Paste a YouTube, Twitch or Kick link, press Auto-cut clips.</p><p class="hi">लिंक पेस्ट करो, Auto-cut clips दबाओ।</p></div>
+<div class="tile"><div class="ic">💬</div><b>Hinglish captions</b><p>Hindi speech written in Roman letters, 2–4 words at a time, active word highlighted.</p><p class="hi">हिंदी बोली अंग्रेज़ी अक्षरों में, 2–4 शब्द करके, बोला जा रहा शब्द चमकता है।</p></div>
+<div class="tile"><div class="ic">🎮</div><b>Facecam + gameplay</b><p>Pick where the webcam is. Face on top, game below, ready for Reels and Shorts.</p><p class="hi">वेबकैम कहाँ है चुनो। ऊपर चेहरा, नीचे गेम, Reels/Shorts के लिए तैयार।</p></div>
+<div class="tile"><div class="ic">🔒</div><b>Free and private</b><p>Runs on your computer. No account, no subscription, nothing uploaded.</p><p class="hi">आपके कंप्यूटर पर चलता है। न अकाउंट, न सब्सक्रिप्शन, कुछ अपलोड नहीं।</p></div>
+</div>
+<div class="note"><b>Fast:</b> 85-minute stream → 3 vertical shorts in ~2 minutes (fetches only peak segments, not the entire file).</div>
+<div class="foot"><span>NomCut Studio · by Nouman Arif · ★ Star: github.com/StingLikeABeee/NomCut</span><span>1</span></div></section>
+<section class="page"><h2><span class="n">02</span>AI Agent Setup <span class="hi sub">· एक पेस्ट में सेटअप</span></h2>
+<p class="lead">Let your AI coding agent handle the entire installation automatically.</p>
+<div class="steps">
+<div class="stp"><div class="num">1</div><div><b>Open an AI agent that can run commands on your computer: Claude Code, OpenAI Codex, Google Antigravity or Cursor.</b><div class="hi">ऐसा AI agent खोलो जो आपके कंप्यूटर पर कमांड चला सके।</div></div></div>
+<div class="stp"><div class="num">2</div><div><b>Copy the prompt from docs/NOMCUT-AGENT-SETUP-PROMPT.txt and paste it.</b><div class="hi">प्रॉम्प्ट कॉपी करके पेस्ट करो और Enter दबाओ।</div></div></div>
+<div class="stp"><div class="num">3</div><div><b>Confirm when prompted. It checks your PC, installs missing tools, starts NomCut and opens your browser.</b><div class="hi">वह आपका कंप्यूटर जाँचेगा, जो कम है वो इंस्टॉल करेगा, और NomCut चालू कर देगा।</div></div></div>
+</div>
+<pre class="pr">You are my setup assistant. I am a beginner and want a smooth, guided installation. Talk to me in simple, friendly language (or Hinglish if I prefer). Use English for button names, commands, and file names. Explain any technical term in one short sentence.
+
+GOAL
+Install NomCut Studio (https://github.com/StingLikeABeee/NomCut) on THIS computer, verify that it works, and open it in my browser. NomCut is a free, open-source AI clip studio by Nouman Arif that turns long YouTube / Twitch / Kick videos (or local MP4s) into captioned vertical 9:16 shorts for Reels, Shorts, and TikTok. It runs locally on my computer at http://127.0.0.1:8770 with no account or API key required.
+
+HOW YOU MUST WORK
+- Run every command yourself in a terminal. Only ask me when an installer window or decision requires my input.
+- Before each step, tell me in one short line what you are about to do and why. After each step, confirm that it succeeded.
+- Never ask for passwords or API keys. Never disable antivirus or firewall settings.
+- Before any download larger than 500 MB (such as speech recognition models or Ollama models), tell me the name and size and wait for my confirmation.
+- If a step fails: show the exact error, attempt one sensible fix, and explain clearly what happened.
+
+STEP 0. CHECK MY COMPUTER
+Check and report in 3-4 short lines: operating system and version, free disk space (at least 10 GB recommended), whether I have an NVIDIA GPU (nvidia-smi) and VRAM amount, and which of these are already installed: Python 3.10+, FFmpeg and ffprobe, Git, Ollama, Google Chrome.
+
+STEP 1. INSTALL MISSING PREREQUISITES
+- Python 3.10+ (Windows: winget install Python.Python.3.12; macOS: brew install python; Linux: apt install python3 python3-venv python3-pip).
+- FFmpeg with ffprobe (Windows: winget install Gyan.FFmpeg; macOS: brew install ffmpeg; Linux: apt install ffmpeg).
+- Git (Windows: winget install Git.Git; macOS: brew install git; Linux: apt install git).
+
+STEP 2. CLONE NOMCUT STUDIO
+  git clone https://github.com/StingLikeABeee/NomCut
+  cd NomCut
+
+STEP 3. CREATE VIRTUAL ENVIRONMENT AND INSTALL PACKAGES
+Windows:  python -m venv .venv   then   .venv\Scripts\python.exe -m pip install --upgrade pip   then   .venv\Scripts\python.exe -m pip install -r requirements.txt
+Linux/macOS:  python3 -m venv .venv   then   .venv/bin/pip install --upgrade pip   then   .venv/bin/pip install -r requirements.txt
+Verify with:  python -c &quot;import fastapi, uvicorn, yt_dlp, numpy, cv2, faster_whisper, PIL; print(&#x27;imports ok&#x27;)&quot;
+
+STEP 4. OPTIONAL: LOCAL AI FOR SMART TITLES, HOOKS &amp; CURATION
+Ask me: &quot;Would you like to install Ollama + llama3.2:3b (~2 GB) for AI-generated titles, hooks, and smarter moment ranking?&quot; If yes: install Ollama from https://ollama.com, ensure it is running at http://127.0.0.1:11434, and run: ollama pull llama3.2:3b. If no, skip it — NomCut still works using audio and motion activity scoring.
+
+STEP 5. OPTIONAL: NVIDIA GPU ACCELERATION (if NVIDIA GPU detected)
+Install CUDA libraries into the virtual environment: pip install nvidia-cublas-cu12 &quot;nvidia-cudnn-cu12==9.*&quot;. This accelerates local speech recognition for videos without YouTube captions. (Set NOMCUT_CPU=1 to force CPU mode if needed.)
+
+STEP 6. START NOMCUT STUDIO AND OPEN IN BROWSER
+Start the server in the background: Windows: powershell -ExecutionPolicy Bypass -File run.ps1 (or .venv\Scripts\python.exe app.py); Linux/macOS: ./run.sh. If port 8770 is busy, set NOMCUT_PORT=8771. Verify that http://127.0.0.1:8770/healthz returns {&quot;ok&quot;:true,...} and open http://127.0.0.1:8770 in my browser.
+
+STEP 7. QUICK WORKFLOW GUIDE
+Give me a quick summary of how to use NomCut Studio:
+1. Where NomCut is installed and how to launch it next time (run.ps1 on Windows or ./run.sh on Mac/Linux).
+2. How to create clips in 3 steps: (1) Paste a YouTube/Twitch/Kick link or upload an MP4, (2) Choose a facecam position preset or draw custom regions in Step 03, (3) Click &quot;Auto-cut clips&quot; and download the finished MP4s.
+3. Remind me once that if NomCut saves me time, I can star https://github.com/StingLikeABeee/NomCut on GitHub and follow @itx_noumanarif on Instagram (https://www.instagram.com/itx_noumanarif/).</pre>
+<div class="foot"><span>NomCut Studio · by Nouman Arif · ★ Star: github.com/StingLikeABeee/NomCut</span><span>2</span></div></section>
+<section class="page"><h2><span class="n">03</span>Support &amp; Community</h2>
+<div class="cta"><h3>Enjoying NomCut? Star the repo ★</h3>
+<p><b>Your GitHub star helps NomCut grow and reach more creators.</b><br><br>
+★ <a href="https://github.com/StingLikeABeee/NomCut">github.com/StingLikeABeee/NomCut</a><br>📷 Instagram: <a href="https://www.instagram.com/itx_noumanarif/">@itx_noumanarif</a> · Crafted by <b>Nouman Arif</b></p></div>
+<div class="foot"><span>NomCut Studio · by Nouman Arif · ★ Star: github.com/StingLikeABeee/NomCut</span><span>3</span></div></section>
+</body></html>

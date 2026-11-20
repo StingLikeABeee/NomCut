@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NomCut · AI Vertical Clip Studio for Streamers &amp; Creators</title>
+<meta name="description" content="Drop a YouTube, Twitch or Kick link and generate captioned 9:16 vertical shorts in under two minutes. Free, open-source, 100% local on your PC. Hinglish subtitles, facecam framing, and real-time stream clipping.">
+<meta property="og:title" content="NomCut: Full streams. Viral cuts.">
+<meta property="og:description" content="Free and open-source AI clip studio by Nouman Arif. One-click Windows setup, Hinglish captions, 11 facecam layouts, live stream clipping, and adaptive scoring.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23060a0f'/%3E%3Ctext x='7' y='45' font-family='Impact,Arial Black' font-size='32' fill='%2300f59b'%3ENC%3C/text%3E%3Cpath d='M48 16 L40 32 H52 L42 48' stroke='%2300e5ff' stroke-width='4.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<style>
+:root{--bg:#060a0f;--panel:#0e1520;--line:#1e2d3d;--emerald:#00f59b;--cyan:#00e5ff;--amber:#ffb800;--white:#f0f7fc;--muted:#8a9eb5}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--white);font-family:"Segoe UI",system-ui,-apple-system,"Nirmala UI",sans-serif;line-height:1.55}
+a{color:var(--cyan)}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+nav{position:sticky;top:0;z-index:20;background:#060a0fe6;backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;gap:18px;height:58px}
+.logo{font-family:Impact,"Arial Black",sans-serif;font-size:22px;letter-spacing:.03em;color:var(--white);text-decoration:none}.logo b{color:var(--emerald)}
+nav .links{margin-left:auto;display:flex;gap:16px;align-items:center;font-size:14px}nav .links a{color:var(--muted);text-decoration:none}nav .links a:hover{color:var(--white)}
+.btn{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:12px 22px;font-weight:800;text-decoration:none;border:1px solid transparent;cursor:pointer;font-size:15px;font-family:inherit;transition:transform .15s}
+.btn.main{background:linear-gradient(90deg,var(--emerald),var(--cyan));color:#04140d;font-size:18px;padding:16px 30px;box-shadow:0 0 40px #00f59b44}
+.btn.emerald{background:linear-gradient(90deg,var(--emerald),#00b8ff);color:#04140d}
+.btn.ghost{background:#ffffff10;border-color:#ffffff40;color:var(--white)}
+.btn.white{background:#fff;color:#060a0f}
+.btn:hover{transform:translateY(-2px)}
+.hero{position:relative;overflow:hidden;background:radial-gradient(circle at 80% 105%,#00f59b44 0 15%,#00e5ff22 15% 32%,transparent 36%),linear-gradient(135deg,#06131f 0%,#08262c 45%,#0b3b36 80%,#0d4a3e 100%)}
+.hero::after{content:"";position:absolute;left:-10%;right:-10%;bottom:0;height:90px;background:linear-gradient(#060a0f00,#060a0f),repeating-linear-gradient(90deg,#00f59b33 0 1px,transparent 1px 60px)}
+.hero .wrap{display:grid;grid-template-columns:1.25fr .75fr;gap:30px;align-items:center;padding-top:56px;padding-bottom:110px;position:relative;z-index:1}
+.kicker{letter-spacing:.3em;font-size:12px;font-weight:800;color:var(--cyan)}
+h1{font-family:Impact,"Arial Black",sans-serif;font-size:clamp(40px,7vw,76px);line-height:.98;margin:10px 0 14px;letter-spacing:.01em;text-shadow:0 0 40px #00f59b66}h1 em{font-style:normal;color:var(--emerald)}
+.sub{font-size:19px;max-width:560px;color:#d6f5ea}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin:22px 0 10px}
+.fine{font-size:13px;color:#b2e2d2}
+.phone{justify-self:center;width:230px;border-radius:30px;border:6px solid #132836;box-shadow:0 20px 60px #000a,0 0 60px #00f59b44;overflow:hidden;background:#000}
+.phone img,.phone video{display:block;width:100%}
+section{padding:64px 0}
+h2{font-size:clamp(26px,4vw,38px);margin:0 0 8px;letter-spacing:-.01em}h2 em{font-style:normal;color:var(--emerald)}
+.lead{color:var(--muted);max-width:680px;margin:0 0 26px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.step{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:22px}
+.step .n{width:38px;height:38px;border-radius:50%;background:var(--emerald);color:#04140d;font-weight:900;display:flex;align-items:center;justify-content:center;margin-bottom:10px;font-size:18px}
+.step b{font-size:18px}.step p{color:var(--muted);margin:6px 0 0}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.tile{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:22px}
+.tile .ic{font-size:28px}.tile b{display:block;font-size:17px;margin:6px 0 4px}.tile p{margin:0;color:var(--muted);font-size:14.5px}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.tab{background:var(--panel);border:1px solid var(--line);color:var(--muted);padding:10px 18px;border-radius:999px;cursor:pointer;font-weight:700;font-family:inherit;font-size:14px}
+.tab.on{background:var(--emerald);border-color:var(--emerald);color:#04140d}
+.pane{display:none;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:24px}.pane.on{display:block}
+.pane ol{padding-left:20px;margin:10px 0}.pane li{margin:6px 0}
+code,pre{font-family:Consolas,monospace}pre{background:#060a0f;border:1px solid var(--line);border-radius:12px;padding:14px;overflow:auto;font-size:13.5px;margin:10px 0;white-space:pre-wrap;word-break:break-all}
+.copy{display:flex;gap:10px;align-items:stretch;flex-wrap:wrap}.copy pre{flex:1;margin:0;min-width:240px}
+.note{border-left:4px solid var(--amber);background:#1f190b;padding:12px 16px;border-radius:0 12px 12px 0;color:#ffe6a3;font-size:14.5px;margin:14px 0}
+.shot{width:100%;border-radius:16px;border:1px solid var(--line);box-shadow:0 20px 60px #000a}
+details{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:4px 18px;margin:10px 0}summary{cursor:pointer;font-weight:700;padding:12px 0}details p{color:var(--muted);margin:0 0 14px}
+.support{background:linear-gradient(135deg,#082b27,#0d3d4d);border:1px solid #1b5954;border-radius:22px;padding:34px;text-align:center}
+.support .cta{justify-content:center}
+footer{border-top:1px solid var(--line);padding:30px 0;color:var(--muted);font-size:14px;text-align:center}
+.os-note{display:none}
+@media(max-width:820px){.hero .wrap{grid-template-columns:1fr;padding-bottom:90px}.phone{width:200px}.steps,.grid{grid-template-columns:1fr}nav .links a.hide-s{display:none}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<nav><div class="wrap">
+  <a class="logo" href="#">NC<b>⚡</b> NOMCUT</a>
+  <div class="links">
+    <a class="hide-s" href="#how">How it works</a><a class="hide-s" href="#features">Features</a><a class="hide-s" href="#setup">Setup</a><a class="hide-s" href="#faq">FAQ</a>
+    <a class="btn white" style="padding:8px 16px;font-size:13px" href="https://github.com/StingLikeABeee/NomCut" target="_blank" rel="noopener">★ Star on GitHub</a>
+  </div>
+</div></nav>
+
+<header class="hero"><div class="wrap">
+  <div>
+    <div class="kicker">100% FREE · OPEN-SOURCE · ON-DEVICE STUDIO</div>
+    <h1>Full streams.<br><em>Viral cuts.</em></h1>
+    <p class="sub">Drop a YouTube, Twitch or Kick link. Generate captioned 9:16 vertical shorts in under two minutes — complete with Hinglish subtitles, smart facecam framing, and real-time live clipping.</p>
+    <div class="cta">
+      <a class="btn main" id="dl" href="https://github.com/StingLikeABeee/NomCut/releases/latest/download/NomCut-Setup.bat">⬇ Download for Windows</a>
+      <a class="btn ghost" href="#setup">Mac / Linux / AI-agent setup</a>
+    </div>
+    <div class="fine">Zero cloud fees, zero watermarks, no sign-up. Everything renders privately on your machine.</div>
+    <div class="os-note note" id="mobile-note"><b>Browsing on mobile?</b> NomCut Studio runs on your computer. Open this page on your PC, or <a href="#" id="copy-link">copy this link</a> to send to your desktop.</div>
+  </div>
+  <div class="phone"><video src="demo.mp4" poster="demo-poster.jpg" autoplay loop muted playsinline preload="auto" aria-label="A NomCut vertical clip with hook banner and dynamic captions"></video></div>
+</div></header>
+
+<section id="how"><div class="wrap">
+  <h2>Three steps to <em>publish-ready shorts.</em></h2>
+  <p class="lead">No terminal wizardry or manual timeline scrubbing required.</p>
+  <div class="steps">
+    <div class="step"><div class="n">1</div><b>Run the one-click setup</b><p>The launcher verifies your PC, sets up Python and FFmpeg automatically, places a shortcut on your Desktop, and opens NomCut Studio in your browser.</p></div>
+    <div class="step"><div class="n">2</div><b>Drop your stream link</b><p>Paste any YouTube, Twitch, or Kick URL. Pick a webcam corner preset (or let auto-detect find it) and hit <b>Auto-cut clips</b>.</p></div>
+    <div class="step"><div class="n">3</div><b>Export &amp; post</b><p>Captioned 9:16 cuts stream into your workspace with AI hooks, titles, and viral ratings. Preview instantly and download the MP4.</p></div>
+  </div>
+</div></section>
+
+<section id="features" style="background:#081018"><div class="wrap">
+  <h2>Engineered for <em>streamers &amp; creators</em></h2>
+  <p class="lead">Instead of slicing video blindly, NomCut combines audio energy, visual action, and transcript intelligence.</p>
+  <div class="grid">
+    <div class="tile"><div class="ic">🔥</div><b>Multi-signal highlight detection</b><p>Combines sudden loudness spikes, vocal energy, hype phrases ("oh my god", "bhaago"), optical-flow motion, and local LLM evaluation into a 0–99 viral score.</p></div>
+    <div class="tile"><div class="ic">💬</div><b>Native Hinglish &amp; dynamic captions</b><p>Transliterates Hindi speech into clean Roman Hinglish automatically, highlighting each active word across 5 signature presets: Cyber Pulse, Hormozi, MrBeast, Impact, and Minimal.</p></div>
+    <div class="tile"><div class="ic">🎮</div><b>11 creator layouts</b><p>Stack facecam above gameplay, use circular PiP overlays, side-by-side splits, or ambient blurred backdrops with instant re-editing.</p></div>
+    <div class="tile"><div class="ic">📡</div><b>Real-time stream clipper</b><p>Monitor live Twitch or YouTube broadcasts. NomCut tracks live chat velocity and cuts a backdated clip automatically whenever chat explodes.</p></div>
+    <div class="tile"><div class="ic">⭐</div><b>Adaptive taste learning</b><p>Rate your generated cuts with 1–5 stars. NomCut refits its local scoring weights using ridge regression to match your unique editing style.</p></div>
+    <div class="tile"><div class="ic">🔎</div><b>Automatic facecam finder</b><p>Scans frames for static border geometry paired with local YuNet face detection, locking onto the streamer's webcam while ignoring game HUDs and minimaps.</p></div>
+    <div class="tile"><div class="ic">🎨</div><b>Social cards &amp; audio risers</b><p>Wrap clips in X/Twitter posts, TikTok hooks, or Breaking News banners. Add brand watermarks, channel credits, outro ribbons, and swelling background music beds.</p></div>
+    <div class="tile"><div class="ic">👥</div><b>Streamer watchlist</b><p>Add your favorite creators once. NomCut polls every minute and starts recording and clipping chat spikes automatically the moment they go live.</p></div>
+    <div class="tile"><div class="ic">🤖</div><b>Marathon stream AI slicer</b><p>Splits 9-hour stream transcripts into bite-sized chunks with copy-ready prompts for any free chatbot, then downloads and renders only the selected timestamps.</p></div>
+    <div class="tile"><div class="ic">📱</div><b>Wi-Fi phone remote</b><p>Control live stream clipping from your phone on the same Wi-Fi: watch the live chat hype meter, trigger instant cuts, and save MP4s to your camera roll.</p></div>
+    <div class="tile"><div class="ic">🔒</div><b>100% private &amp; unrestricted</b><p>Runs entirely on your hardware. No subscriptions, no cloud uploads, no watermarks. Released under the MIT license.</p></div>
+  </div>
+</div></section>
+
+<section id="setup"><div class="wrap">
+  <h2>Choose your <em>installation</em></h2>
+  <p class="lead">One-click installer for Windows, plus streamlined options for macOS, Linux, and AI coding agents.</p>
+  <div class="tabs" role="tablist">
+    <button class="tab on" data-p="win">Windows (one click)</button>
+    <button class="tab" data-p="ai">AI Agent Setup</button>
+    <button class="tab" data-p="mac">Mac / Linux</button>
+    <button class="tab" data-p="dev">Developers</button>
+  </div>
+
+  <div class="pane on" id="p-win">
+    <a class="btn main" href="https://github.com/StingLikeABeee/NomCut/releases/latest/download/NomCut-Setup.bat">⬇ Download NomCut-Setup.bat</a>
+    <ol>
+      <li>Double-click the downloaded file. If Windows SmartScreen appears, click <b>More info → Run anyway</b> (the script is plain text and can be inspected in Notepad).</li>
+      <li>It verifies your environment and installs Python 3.12 and FFmpeg automatically without requiring admin privileges.</li>
+      <li>Choose whether to enable optional GPU acceleration and local Ollama AI titles, then NomCut Studio opens in your browser.</li>
+      <li>Launch anytime from the <b>NomCut</b> shortcut on your Desktop.</li>
+    </ol>
+    <div class="note">Everything installs cleanly inside <code>%LOCALAPPDATA%\NomCut</code>. Delete that folder anytime to uninstall.</div>
+  </div>
+
+  <div class="pane" id="p-ai">
+    <p>Want your AI coding assistant (Claude Code, Codex, Antigravity, or Cursor) to set everything up for you? Copy the setup prompt below and paste it directly into your agent.</p>
+    <button class="btn emerald" id="copy-prompt">📋 Copy AI setup prompt</button>
+    <span id="copy-prompt-msg" style="margin-left:10px;color:var(--emerald)"></span>
+    <p style="margin-top:14px"><a href="NOMCUT-AGENT-SETUP-PROMPT.txt" target="_blank" rel="noopener">Open the prompt as a text file</a></p>
+  </div>
+
+  <div class="pane" id="p-mac">
+    <p>Requires Python 3.10+ and FFmpeg. Run this command in your Terminal:</p>
+    <div class="copy"><pre id="mac-cmd">curl -fsSL https://raw.githubusercontent.com/StingLikeABeee/NomCut/main/install.sh | bash</pre><button class="btn emerald" data-copy="mac-cmd">Copy</button></div>
+    <div class="note">If your system is missing Python or FFmpeg, the installer will let you know which package command to run first.</div>
+  </div>
+
+  <div class="pane" id="p-dev">
+    <pre>git clone https://github.com/StingLikeABeee/NomCut
+cd NomCut
+./run.ps1     # Windows
+./run.sh      # Mac / Linux</pre>
+    <p>Then visit <code>http://127.0.0.1:8770</code>. Full source code and documentation: <a href="https://github.com/StingLikeABeee/NomCut" target="_blank" rel="noopener">github.com/StingLikeABeee/NomCut</a>.</p>
+  </div>
+</div></section>
+
+<section style="background:#081018"><div class="wrap">
+  <h2>Inside <em>NomCut Studio</em></h2>
+  <p class="lead">A clean, single-screen dark workspace built for speed.</p>
+  <img class="shot" src="nomcut-ui.jpg" alt="NomCut Studio showing generated vertical clips">
+</div></section>
+
+<section id="faq"><div class="wrap">
+  <h2>Frequently Asked Questions</h2>
+  <details><summary>Is NomCut completely free?</summary><p>Yes. NomCut is 100% free and open-source under the MIT License. There are no subscriptions, no hidden tiers, and no watermarks.</p></details>
+  <details><summary>Are my videos uploaded to any server?</summary><p>Never. All downloading, speech recognition, highlight scoring, and video rendering happen locally on your own computer.</p></details>
+  <details><summary>What hardware do I need?</summary><p>A 64-bit Windows 10/11 PC (or macOS/Linux machine) with at least 6 GB of free disk space. An NVIDIA GPU speeds up encoding and local Whisper transcription, but CPU mode works out of the box.</p></details>
+  <details><summary>Can I use NomCut from my phone?</summary><p>Yes! When you launch NomCut using the <b>NomCut (phone access)</b> shortcut, you can connect your phone over your home Wi-Fi using a 6-digit PIN to monitor live streams, trigger instant cuts, and download clips.</p></details>
+  <details><summary>How do I uninstall NomCut?</summary><p>Simply delete the <code>%LOCALAPPDATA%\NomCut</code> folder and remove the Desktop shortcuts.</p></details>
+</div></section>
+
+<section><div class="wrap">
+  <div class="support">
+    <h2>Enjoying NomCut? <em>Show some love.</em></h2>
+    <p style="max-width:620px;margin:0 auto 6px">NomCut is built and maintained by <b>Nouman Arif</b> for the creator community. Star the repository on GitHub and follow on Instagram for new releases and updates!</p>
+    <div class="cta">
+      <a class="btn white" href="https://github.com/StingLikeABeee/NomCut" target="_blank" rel="noopener">★ Star on GitHub</a>
+      <a class="btn emerald" href="https://www.instagram.com/itx_noumanarif/" target="_blank" rel="noopener">Follow @itx_noumanarif</a>
+    </div>
+  </div>
+</div></section>
+
+<footer><div class="wrap">Crafted by <b>Nouman Arif</b> · MIT License · <a href="https://github.com/StingLikeABeee/NomCut" target="_blank" rel="noopener">GitHub</a> · <a href="https://www.instagram.com/itx_noumanarif/" target="_blank" rel="noopener">Instagram</a></div></footer>
+
+<script>
+(function(){
+  // tabs
+  document.querySelectorAll('.tab').forEach(function(t){t.onclick=function(){
+    document.querySelectorAll('.tab').forEach(function(x){x.classList.toggle('on',x===t)});
+    document.querySelectorAll('.pane').forEach(function(p){p.classList.toggle('on',p.id==='p-'+t.dataset.p)});
+  };});
+  // copy buttons
+  document.querySelectorAll('[data-copy]').forEach(function(b){b.onclick=function(){
+    var txt=document.getElementById(b.dataset.copy).textContent;
+    navigator.clipboard.writeText(txt).then(function(){var o=b.textContent;b.textContent='Copied ✓';setTimeout(function(){b.textContent=o},1500)});
+  };});
+  // copy the agent prompt (loaded from the same site so it always matches the repo)
+  var cp=document.getElementById('copy-prompt'),msg=document.getElementById('copy-prompt-msg');
+  if(cp)cp.onclick=function(){
+    fetch('NOMCUT-AGENT-SETUP-PROMPT.txt').then(function(r){if(!r.ok)throw 0;return r.text()}).then(function(t){
+      return navigator.clipboard.writeText(t).then(function(){msg.textContent='Copied ✓ now paste it into your AI agent'});
+    }).catch(function(){msg.textContent='Could not copy. Use "Open the prompt as a text file" below.';msg.style.color='#ffb800'});
+  };
+  // phone and non-Windows hints
+  var ua=navigator.userAgent||'',mobile=/Android|iPhone|iPad|iPod/i.test(ua),mac=/Macintosh|Mac OS X/i.test(ua)&&!mobile,linux=/Linux|X11/i.test(ua)&&!mobile&&!/Windows/i.test(ua);
+  if(mobile){document.getElementById('mobile-note').style.display='block';
+    var c=document.getElementById('copy-link');if(c)c.onclick=function(e){e.preventDefault();navigator.clipboard&&navigator.clipboard.writeText(location.href);c.textContent='link copied ✓'};}
+  if(mac||linux){var dl=document.getElementById('dl');dl.textContent='⬇ Windows setup (you are on '+(mac?'Mac':'Linux')+': see Mac / Linux tab)';dl.href='#setup';
+    document.querySelector('[data-p="mac"]').click();}
+})();
+</script>
+</body>
+</html>
